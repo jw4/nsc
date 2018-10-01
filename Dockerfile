@@ -6,7 +6,7 @@ FROM  golang:stretch as builder
 
 ARG   ROOT_IMPORT_PATH
 ARG   CMD_REL_PATH
-ARG   BUILD_VERSION=v1.3.0
+ARG   BUILD_VERSION=v0.0.1
 
 COPY  . /go/src/${ROOT_IMPORT_PATH}
 
