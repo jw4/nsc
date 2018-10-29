@@ -10,7 +10,7 @@ ifeq ($(CMD_REL_PATH),)
 endif
 
 ifeq ($(BUILD_VERSION),)
-	BUILD_VERSION=$(shell git describe --dirty --first-parent --always --tags)
+	BUILD_VERSION := $(shell git describe --dirty --first-parent --always --tags)
 endif
 
 .PHONY: all

@@ -1,11 +1,19 @@
 
 [[constraint]]
   name = "github.com/coredns/coredns"
-  version = "1.2.2"
+  version = "1.2.5"
 
 [[constraint]]
-  branch = "master"
   name = "jw4.us/nspub"
+  branch = "master"
+
+[[override]]
+  name = "github.com/prometheus/client_golang"
+  version = "v0.8.0"
+
+[[override]]
+  name = "github.com/apache/thrift"
+  revision = "e59b73d3c2bf1c328ccb78e683c0462fa1a473c7"
 
 [prune]
   go-tests = true
