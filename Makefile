@@ -23,15 +23,20 @@ clean:
 
 .PHONY: local
 local:
-	@go build \
-			-ldflags="-s -w -X ${ROOT_IMPORT_PATH}.Version=${BUILD_VERSION}" \
+	@CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
+		go build -a \
 			-tags netgo \
+			-ldflags="-s -w -extldflags -static -X ${ROOT_IMPORT_PATH}.Version=${BUILD_VERSION}" \
 			-o app \
 		${CMD_REL_PATH}
 
 .PHONY: image
 image:
 	@docker build \
+			--compress \
+			--no-cache \
+			--squash \
+			--force-rm \
 			--build-arg ROOT_IMPORT_PATH=$(ROOT_IMPORT_PATH) \
 			--build-arg CMD_REL_PATH=$(CMD_REL_PATH) \
 			--build-arg BUILD_VERSION=$(BUILD_VERSION) \

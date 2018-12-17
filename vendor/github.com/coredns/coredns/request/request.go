@@ -192,14 +192,12 @@ func (r *Request) Size() int {
 }
 
 // SizeAndDo adds an OPT record that the reflects the intent from request.
-// The returned bool indicated if an record was found and normalised.
+// The returned bool indicates if an record was found and normalised.
 func (r *Request) SizeAndDo(m *dns.Msg) bool {
-	o := r.Req.IsEdns0() // TODO(miek): speed this up
+	o := r.Req.IsEdns0()
 	if o == nil {
 		return false
 	}
-
-	odo := o.Do()
 
 	if mo := m.IsEdns0(); mo != nil {
 		mo.Hdr.Name = "."
@@ -208,20 +206,24 @@ func (r *Request) SizeAndDo(m *dns.Msg) bool {
 		mo.SetUDPSize(o.UDPSize())
 		mo.Hdr.Ttl &= 0xff00 // clear flags
 
-		if odo {
+		// Assume if the message m has options set, they are OK and represent what an upstream can do.
+
+		if o.Do() {
 			mo.SetDo()
 		}
 		return true
 	}
 
+	// Reuse the request's OPT record and tack it to m.
 	o.Hdr.Name = "."
 	o.Hdr.Rrtype = dns.TypeOPT
 	o.SetVersion(0)
 	o.Hdr.Ttl &= 0xff00 // clear flags
 
-	if odo {
-		o.SetDo()
+	if len(o.Option) > 0 {
+		o.Option = supportedOptions(o.Option)
 	}
+
 	m.Extra = append(m.Extra, o)
 	return true
 }
@@ -240,6 +242,23 @@ func (r *Request) Scrub(reply *dns.Msg) *dns.Msg {
 	reply.Compress = false
 	rl := reply.Len()
 	if size >= rl {
+		if r.Proto() != "udp" {
+			return reply
+		}
+
+		// Last ditch attempt to avoid fragmentation, if the size is bigger than the v4/v6 UDP fragmentation
+		// limit and sent via UDP compress it (in the hope we go under that limit). Limits taken from NSD:
+		//
+		//    .., 1480 (EDNS/IPv4), 1220 (EDNS/IPv6), or the advertized EDNS buffer size if that is
+		//    smaller than the EDNS default.
+		// See: https://open.nlnetlabs.nl/pipermail/nsd-users/2011-November/001278.html
+		if rl > 1480 && r.Family() == 1 {
+			reply.Compress = true
+		}
+		if rl > 1220 && r.Family() == 2 {
+			reply.Compress = true
+		}
+
 		return reply
 	}
 
@@ -288,7 +307,6 @@ func (r *Request) Scrub(reply *dns.Msg) *dns.Msg {
 	}
 
 	if rl <= size {
-		r.SizeAndDo(reply)
 		return reply
 	}
 
@@ -324,7 +342,6 @@ func (r *Request) Scrub(reply *dns.Msg) *dns.Msg {
 		// this extra m-1 step does make it fit in the client's buffer however.
 	}
 
-	r.SizeAndDo(reply)
 	reply.Truncated = true
 	return reply
 }

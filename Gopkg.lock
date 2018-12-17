@@ -12,10 +12,16 @@
   version = "v0.6.1"
 
 [[projects]]
+  name = "github.com/DataDog/zstd"
+  packages = ["."]
+  revision = "aebefd9fcb99f22cd691ef778a12ed68f0e6a1ab"
+  version = "v1.3.4"
+
+[[projects]]
   name = "github.com/Shopify/sarama"
   packages = ["."]
-  revision = "ec843464b50d4c8b56403ec9d589cf41ea30e722"
-  version = "v1.19.0"
+  revision = "879f631812a30a580659e8035e7cda9994bb99ac"
+  version = "v1.20.0"
 
 [[projects]]
   name = "github.com/apache/thrift"
@@ -91,8 +97,8 @@
     "plugin/whoami",
     "request"
   ]
-  revision = "756749c5cad4cd40453b82f70592bc19bb9ccb15"
-  version = "v1.2.6"
+  revision = "c8f0e94026b5f3530064dd3266eef1a80e3b0f1c"
+  version = "v1.3.0"
 
 [[projects]]
   name = "github.com/davecgh/go-spew"
@@ -139,14 +145,14 @@
 [[projects]]
   name = "github.com/go-logfmt/logfmt"
   packages = ["."]
-  revision = "390ab7935ee28ec6b286364bba9b4dd6410cb3d5"
-  version = "v0.3.0"
+  revision = "07c9b44f60d7ffdfb7d8efe1ad539965737836dc"
+  version = "v0.4.0"
 
 [[projects]]
   name = "github.com/gogo/protobuf"
   packages = ["proto"]
-  revision = "636bf0302bc95575d69441b25a2603156ffdddf1"
-  version = "v1.1.1"
+  revision = "4cbf7e384e768b4e01799441fdf2a706a5635ae7"
+  version = "v1.2.0"
 
 [[projects]]
   name = "github.com/golang/protobuf"
@@ -203,8 +209,8 @@
 [[projects]]
   name = "github.com/miekg/dns"
   packages = ["."]
-  revision = "7064f7248f5fa5fd79382a76328b4e200b79e4ae"
-  version = "v1.0.15"
+  revision = "7586a3cbe8ccfc63f82de3ab2ceeb08c9939af72"
+  version = "v1.1.1"
 
 [[projects]]
   name = "github.com/nsqio/go-nsq"
@@ -254,10 +260,11 @@
   name = "github.com/prometheus/client_golang"
   packages = [
     "prometheus",
+    "prometheus/internal",
     "prometheus/promhttp"
   ]
-  revision = "c5b7fccd204277076155f10851dad72b76a49317"
-  version = "v0.8.0"
+  revision = "505eaef017263e299324067d40ca2c48f6a2cf50"
+  version = "v0.9.2"
 
 [[projects]]
   branch = "master"
@@ -273,7 +280,7 @@
     "internal/bitbucket.org/ww/goautoneg",
     "model"
   ]
-  revision = "aeab699e26f4d4089dba5e522e5d9babd2adbaf7"
+  revision = "4724e9255275ce38f7179b2478abeae4e28c904f"
 
 [[projects]]
   branch = "master"
@@ -284,7 +291,7 @@
     "nfs",
     "xfs"
   ]
-  revision = "185b4288413d2a0dd0806f78c90dde719829e5ae"
+  revision = "1dc9a6cbc91aacc3e8b2d63db4d2e957a5394ac4"
 
 [[projects]]
   branch = "master"
@@ -304,7 +311,7 @@
     "ed25519",
     "ed25519/internal/edwards25519"
   ]
-  revision = "3d3f9f413869b949e48070b5bc593aa22cc2b8f2"
+  revision = "505ab145d0a99da450461ae2c1a9f6cd10d1f447"
 
 [[projects]]
   branch = "master"
@@ -323,7 +330,7 @@
     "ipv6",
     "trace"
   ]
-  revision = "adae6a3d119ae4890b46832a2e88a95adc62b8e7"
+  revision = "e147a9138326bc0e9d4e179541ffd8af41cff8a9"
 
 [[projects]]
   branch = "master"
@@ -332,7 +339,7 @@
     "unix",
     "windows"
   ]
-  revision = "0cf1ed9e522b7dbb416f080a5c8003de9b702bf4"
+  revision = "4d1cda033e0619309c606fc686de3adcf599539e"
 
 [[projects]]
   name = "golang.org/x/text"
@@ -359,7 +366,7 @@
   branch = "master"
   name = "google.golang.org/genproto"
   packages = ["googleapis/rpc/status"]
-  revision = "b5d43981345bdb2c233eb4bf3277847b48c6fdc6"
+  revision = "936bffa7f85bf0dd0ec21b13d4d1a022672eeb98"
 
 [[projects]]
   name = "google.golang.org/grpc"
@@ -368,17 +375,22 @@
     "balancer",
     "balancer/base",
     "balancer/roundrobin",
+    "binarylog/grpc_binarylog_v1",
     "codes",
     "connectivity",
     "credentials",
+    "credentials/internal",
     "encoding",
     "encoding/proto",
     "grpclog",
     "internal",
     "internal/backoff",
+    "internal/binarylog",
     "internal/channelz",
     "internal/envconfig",
     "internal/grpcrand",
+    "internal/grpcsync",
+    "internal/syscall",
     "internal/transport",
     "keepalive",
     "metadata",
@@ -391,8 +403,8 @@
     "status",
     "tap"
   ]
-  revision = "2e463a05d100327ca47ac218281906921038fd95"
-  version = "v1.16.0"
+  revision = "df014850f6dee74ba2fc94874043a9f3f75fbfd8"
+  version = "v1.17.0"
 
 [[projects]]
   name = "jw4.us/nspub"
@@ -403,6 +415,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "32ea059c1d760ff8718f1bc9d2411c50e322bfd24a552a1deb992375428dba4c"
+  inputs-digest = "eab0e85a760d6bfd25711f51e3fc21d46b08e10cc98d1e9a087482b00f290609"
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -12,7 +12,11 @@ COPY  . /go/src/${ROOT_IMPORT_PATH}
 
 WORKDIR /go/src/${ROOT_IMPORT_PATH}
 
-RUN   go build -tags netgo -ldflags="-s -w -X ${ROOT_IMPORT_PATH}.Version=${BUILD_VERSION}" -o app ${CMD_REL_PATH}
+RUN   CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
+      go build -a \
+        -tags netgo \
+        -ldflags="-s -w -extldflags -static -X ${ROOT_IMPORT_PATH}.Version=${BUILD_VERSION}" \
+        -o app ${CMD_REL_PATH}
 
 
 #
@@ -31,5 +35,4 @@ COPY  --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY  --from=builder /go/src/${ROOT_IMPORT_PATH}/app /app
 
 ENTRYPOINT ["/app"]
-
 
