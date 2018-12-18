@@ -25,6 +25,7 @@ clean:
 local:
 	@CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
 		go build -a \
+			-mod=vendor \
 			-tags netgo \
 			-ldflags="-s -w -extldflags -static -X ${ROOT_IMPORT_PATH}.Version=${BUILD_VERSION}" \
 			-o app \
