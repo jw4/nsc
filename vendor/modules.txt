@@ -10,7 +10,7 @@ github.com/Shopify/sarama
 github.com/apache/thrift/lib/go/thrift
 # github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973
 github.com/beorn7/perks/quantile
-# github.com/coredns/coredns v1.3.0
+# github.com/coredns/coredns v1.3.1
 github.com/coredns/coredns/core/dnsserver
 github.com/coredns/coredns/coremain
 github.com/coredns/coredns/plugin/auto

@@ -6,7 +6,7 @@ require (
 	github.com/Shopify/sarama v1.20.0 // indirect
 	github.com/Shopify/toxiproxy v2.1.3+incompatible // indirect
 	github.com/apache/thrift v0.0.0-20180514124809-e59b73d3c2bf // indirect
-	github.com/coredns/coredns v1.3.0
+	github.com/coredns/coredns v1.3.1
 	github.com/dnstap/golang-dnstap v0.0.0-20170829151710-2cf77a2b5e11 // indirect
 	github.com/eapache/go-resiliency v1.1.0 // indirect
 	github.com/eapache/go-xerial-snappy v0.0.0-20180814174437-776d5712da21 // indirect

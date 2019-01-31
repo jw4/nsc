@@ -31,7 +31,7 @@ import (
 )
 
 var (
-	Version = "v1.3.0"
+	Version = "v1.3.1"
 
 	directives = []string{
 		"metadata",
