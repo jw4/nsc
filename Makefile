@@ -19,7 +19,7 @@ all: image
 .PHONY: clean
 clean:
 	@-rm ./app ./nsc
-	go clean ./...
+	-go clean ./...
 
 .PHONY: local
 local:
