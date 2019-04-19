@@ -17,7 +17,6 @@ import (
 	_ "github.com/coredns/coredns/plugin/log"
 	_ "github.com/coredns/coredns/plugin/metadata"
 	_ "github.com/coredns/coredns/plugin/nsid"
-	_ "github.com/coredns/coredns/plugin/proxy"
 	_ "github.com/coredns/coredns/plugin/reload"
 	_ "github.com/coredns/coredns/plugin/rewrite"
 	_ "github.com/coredns/coredns/plugin/root"
@@ -55,7 +54,6 @@ var (
 		"auto",
 		"secondary",
 		"forward",
-		"proxy",
 		"whoami",
 	}
 )

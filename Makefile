@@ -20,9 +20,11 @@ all: image
 clean:
 	@-rm ./app ./nsc
 	-go clean ./...
+	-rm -rf vendor
 
 .PHONY: local
 local:
+	@go mod vendor
 	@CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
 		go build -a \
 			-mod=vendor \
@@ -33,6 +35,7 @@ local:
 
 .PHONY: image
 image:
+	@go mod vendor
 	@docker build \
 			--compress \
 			--no-cache \
