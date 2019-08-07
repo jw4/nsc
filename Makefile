@@ -39,7 +39,6 @@ image:
 	@docker build \
 			--compress \
 			--no-cache \
-			--squash \
 			--force-rm \
 			--build-arg ROOT_IMPORT_PATH=$(ROOT_IMPORT_PATH) \
 			--build-arg CMD_REL_PATH=$(CMD_REL_PATH) \
