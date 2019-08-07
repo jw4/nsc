@@ -13,7 +13,7 @@ COPY  . /go/src/${ROOT_IMPORT_PATH}
 
 WORKDIR /go/src/${ROOT_IMPORT_PATH}
 
-RUN   CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
+RUN   CGO_ENABLED=0 \
       go build -a \
         -mod=vendor \
         -tags netgo \
