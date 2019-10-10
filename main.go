@@ -5,20 +5,22 @@ import (
 	"github.com/coredns/coredns/coremain"
 
 	_ "github.com/caddyserver/caddy/onevent"
+	_ "github.com/coredns/coredns/plugin/acl"
 	_ "github.com/coredns/coredns/plugin/any"
 	_ "github.com/coredns/coredns/plugin/auto"
 	_ "github.com/coredns/coredns/plugin/autopath"
+	_ "github.com/coredns/coredns/plugin/azure"
 	_ "github.com/coredns/coredns/plugin/bind"
 	_ "github.com/coredns/coredns/plugin/cache"
 	_ "github.com/coredns/coredns/plugin/cancel"
 	_ "github.com/coredns/coredns/plugin/chaos"
+	_ "github.com/coredns/coredns/plugin/clouddns"
 	_ "github.com/coredns/coredns/plugin/debug"
 	_ "github.com/coredns/coredns/plugin/dnssec"
 	_ "github.com/coredns/coredns/plugin/dnstap"
 	_ "github.com/coredns/coredns/plugin/erratic"
 	_ "github.com/coredns/coredns/plugin/errors"
 	_ "github.com/coredns/coredns/plugin/etcd"
-	_ "github.com/coredns/coredns/plugin/federation"
 	_ "github.com/coredns/coredns/plugin/file"
 	_ "github.com/coredns/coredns/plugin/forward"
 	_ "github.com/coredns/coredns/plugin/grpc"
@@ -39,16 +41,18 @@ import (
 	_ "github.com/coredns/coredns/plugin/root"
 	_ "github.com/coredns/coredns/plugin/route53"
 	_ "github.com/coredns/coredns/plugin/secondary"
+	_ "github.com/coredns/coredns/plugin/sign"
 	_ "github.com/coredns/coredns/plugin/template"
 	_ "github.com/coredns/coredns/plugin/tls"
 	_ "github.com/coredns/coredns/plugin/trace"
 	_ "github.com/coredns/coredns/plugin/whoami"
+	_ "github.com/coredns/federation"
 
 	_ "jw4.us/nspub"
 )
 
 var (
-	Version = "v1.6.1"
+	Version = "v1.6.4"
 
 	directives = []string{
 		"metadata",
@@ -78,7 +82,6 @@ var (
 		"template",
 		"hosts",
 		"route53",
-		"federation",
 		"k8s_external",
 		"kubernetes",
 		"file",
