@@ -11,6 +11,7 @@ import (
 	_ "github.com/coredns/coredns/plugin/autopath"
 	_ "github.com/coredns/coredns/plugin/azure"
 	_ "github.com/coredns/coredns/plugin/bind"
+	_ "github.com/coredns/coredns/plugin/bufsize"
 	_ "github.com/coredns/coredns/plugin/cache"
 	_ "github.com/coredns/coredns/plugin/cancel"
 	_ "github.com/coredns/coredns/plugin/chaos"
@@ -45,14 +46,13 @@ import (
 	_ "github.com/coredns/coredns/plugin/template"
 	_ "github.com/coredns/coredns/plugin/tls"
 	_ "github.com/coredns/coredns/plugin/trace"
+	_ "github.com/coredns/coredns/plugin/transfer"
 	_ "github.com/coredns/coredns/plugin/whoami"
 	_ "github.com/coredns/federation"
-
-	_ "jw4.us/nspub"
 )
 
 var (
-	Version = "v1.6.4"
+	Version = "v1.6.7"
 
 	directives = []string{
 		"metadata",
@@ -60,6 +60,7 @@ var (
 		"tls",
 		"reload",
 		"nsid",
+		"bufsize",
 		"root",
 		"bind",
 		"debug",
@@ -70,8 +71,8 @@ var (
 		"prometheus",
 		"errors",
 		"log",
-		"nspub",
 		"dnstap",
+		"acl",
 		"any",
 		"chaos",
 		"loadbalance",
@@ -80,8 +81,12 @@ var (
 		"dnssec",
 		"autopath",
 		"template",
+		"transfer",
 		"hosts",
 		"route53",
+		"azure",
+		"clouddns",
+		"federation",
 		"k8s_external",
 		"kubernetes",
 		"file",
@@ -94,6 +99,7 @@ var (
 		"erratic",
 		"whoami",
 		"on",
+		"sign",
 	}
 )
 
