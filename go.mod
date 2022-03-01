@@ -3,9 +3,8 @@ module jw4.us/nsc
 go 1.13
 
 require (
-	github.com/DataDog/datadog-go v2.2.0+incompatible // indirect
-	github.com/caddyserver/caddy v1.0.3
-	github.com/coredns/coredns v1.6.4
+	github.com/caddyserver/caddy v1.0.4
+	github.com/coredns/coredns v1.6.6
 	github.com/coredns/federation v0.0.0-20190827145442-019e06919f0c
 	jw4.us/nspub v0.0.6
 )
